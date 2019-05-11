@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResTools", "ResTools\ResTools.csproj", "{2EDDA042-BE01-42A5-B462-2A9CBF565588}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webdll", "Webdll\Webdll.csproj", "{DF95C971-417D-48A7-9614-A9052264D89F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResWindow", "ResWindow\ResWindow.csproj", "{9578FF9B-F649-48AD-8536-CF4618050EC1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2EDDA042-BE01-42A5-B462-2A9CBF565588}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EDDA042-BE01-42A5-B462-2A9CBF565588}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EDDA042-BE01-42A5-B462-2A9CBF565588}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EDDA042-BE01-42A5-B462-2A9CBF565588}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF95C971-417D-48A7-9614-A9052264D89F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF95C971-417D-48A7-9614-A9052264D89F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF95C971-417D-48A7-9614-A9052264D89F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF95C971-417D-48A7-9614-A9052264D89F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9578FF9B-F649-48AD-8536-CF4618050EC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9578FF9B-F649-48AD-8536-CF4618050EC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9578FF9B-F649-48AD-8536-CF4618050EC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9578FF9B-F649-48AD-8536-CF4618050EC1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
