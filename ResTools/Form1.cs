@@ -498,6 +498,7 @@ namespace ResTools
                     string fileName = dirName.Substring(dirName.IndexOf("bangumi") + 8).Replace("\\", "/");
                     System.Diagnostics.Process.Start("firefox.exe", "http://localhost/bangumi/xml.html?" + fileName);
                 }
+                copyRatestFolder(dirName);
             }
             else
             {
@@ -533,6 +534,8 @@ namespace ResTools
 
                     preDir = dialog.FileName.Substring(0, dialog.FileName.LastIndexOf("\\"));
                     preDir = preDir.Substring(0, preDir.LastIndexOf("\\"));
+
+                    copyRatestFolder(dialog.FileName);
                 }
                 else
                 {
@@ -1174,6 +1177,35 @@ namespace ResTools
         private void ThreadList_ItemChecked(object sender, ItemCheckedEventArgs e)
         {
             RefreshResList();
+        }
+        private void copyRatestFolder(string fileName)
+        {
+            // 最近フォルダに複製を保存
+            string[] bangumiName = fileName.Split(new String[] { "bangumi" }, StringSplitOptions.None);
+            string ratestDir = bangumiName[0] +"bangumi\\最近\\";
+            try
+            {
+                File.Copy(fileName, ratestDir + bangumiName[1].Replace("\\", ""));
+            }
+            catch
+            {
+            }
+            // 最近フォルダにある一週間以上前のファイルを削除
+            string[] files = Directory.GetFiles(ratestDir);
+            DateTime pre7 = DateTime.Now.AddDays(-7);
+            foreach (string file in files)
+            {
+                if (File.GetCreationTime(file).CompareTo(pre7) <= 0)
+                {
+                    try
+                    {
+                        File.Delete(file);
+                    } catch
+                    {
+                    }
+                }
+
+            }
         }
     }
 }
