@@ -139,6 +139,7 @@ namespace Webdll
     {
         public static Regex ngMatch = new Regex(Lib.getConfig("ng.txt"), RegexOptions.IgnoreCase);
         public static Regex aTagRegex = new Regex("<a href=\"(?<url>.*?)\">.*?</a>", RegexOptions.IgnoreCase);
+        public static Regex repDays = new Regex("\\(.*\\)");
 
         public const string NYAN = "NY:AN:NY";
         public string url = "";
@@ -338,6 +339,7 @@ namespace Webdll
                                     dateStr = dateStr.Substring(0, dateStr.IndexOf('('));
                                     nyan = true;
                                 }
+                                dateStr = repDays.Replace(dateStr, ""); // 曜日バグに対応
                                 DateTime date = DateTime.Parse(dateStr);
                                 date = date.AddMilliseconds(-date.Millisecond);
 
@@ -367,7 +369,8 @@ namespace Webdll
                             string message = m2.Groups["message"].Value.Trim() + "<br><br>";
                             string id = m2.Groups["uid"].Value.Trim().Replace("ID:", "");
                             bool nyan = dateStr.Contains(NYAN);
-                            DateTime date = (nyan) ? DateTime.Parse(dateStr[0].Substring(0, dateStr[0].IndexOf('('))) : DateTime.Parse(dateStr[0] + dateStr[1]);
+                            DateTime date = (nyan) ? DateTime.Parse(dateStr[0].Substring(0, dateStr[0].IndexOf('('))) : DateTime.Parse(
+                                repDays.Replace(dateStr[0] + dateStr[1], " ")); //曜日バグ対策
                             date = date.AddMilliseconds(-date.Millisecond);
                             addRes(number, date, message, id, nyan);
                         }
@@ -563,6 +566,7 @@ namespace Webdll
                         {
                             id += dateStr.Substring(dateStr.IndexOf(" ID:")).Trim();
                             dateStr = dateStr.Substring(0, dateStr.IndexOf(" ID:"));
+                            dateStr = repDays.Replace(dateStr, ""); // 曜日バグに対応
                         }
                         string message = m.Groups["message"].Value.Trim() + "<br><br>";
                         string title = m.Groups["title"].Value.Trim();
