@@ -70,8 +70,6 @@
             this.treeView10 = new System.Windows.Forms.TreeView();
             this.liveradio = new System.Windows.Forms.TabPage();
             this.treeView11 = new System.Windows.Forms.TreeView();
-            this.web = new System.Windows.Forms.TabPage();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.testCheckBox = new System.Windows.Forms.CheckBox();
             this.minutes5 = new System.Windows.Forms.RadioButton();
             this.minutes10 = new System.Windows.Forms.RadioButton();
@@ -96,7 +94,6 @@
             this.liventv.SuspendLayout();
             this.livetx.SuspendLayout();
             this.liveradio.SuspendLayout();
-            this.web.SuspendLayout();
             this.SuspendLayout();
             // 
             // ThreadList
@@ -109,6 +106,7 @@
             this.ThreadList.ContextMenuStrip = this.threadListMenu;
             this.ThreadList.Font = new System.Drawing.Font("MS UI Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.ThreadList.FullRowSelect = true;
+            this.ThreadList.HideSelection = false;
             this.ThreadList.Location = new System.Drawing.Point(596, 4);
             this.ThreadList.MultiSelect = false;
             this.ThreadList.Name = "ThreadList";
@@ -133,14 +131,14 @@
             this.threadListMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.open});
             this.threadListMenu.Name = "threadListMenu";
-            this.threadListMenu.Size = new System.Drawing.Size(134, 26);
+            this.threadListMenu.Size = new System.Drawing.Size(140, 26);
             this.threadListMenu.Opening += new System.ComponentModel.CancelEventHandler(this.threadListMenu_Opening);
             this.threadListMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.threadListMenu_ItemClicked);
             // 
             // open
             // 
             this.open.Name = "open";
-            this.open.Size = new System.Drawing.Size(133, 22);
+            this.open.Size = new System.Drawing.Size(139, 22);
             this.open.Text = "ブラウザで開く";
             this.open.Click += new System.EventHandler(this.open_Click);
             // 
@@ -165,6 +163,7 @@
             this.ResList.ContextMenuStrip = this.resListMenu;
             this.ResList.Font = new System.Drawing.Font("MS UI Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.ResList.FullRowSelect = true;
+            this.ResList.HideSelection = false;
             this.ResList.Location = new System.Drawing.Point(596, 224);
             this.ResList.MultiSelect = false;
             this.ResList.Name = "ResList";
@@ -196,7 +195,7 @@
             this.EndBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.EndBar.Location = new System.Drawing.Point(600, 620);
             this.EndBar.Name = "EndBar";
-            this.EndBar.Size = new System.Drawing.Size(402, 37);
+            this.EndBar.Size = new System.Drawing.Size(402, 45);
             this.EndBar.TabIndex = 4;
             this.EndBar.TickFrequency = 0;
             this.EndBar.TickStyle = System.Windows.Forms.TickStyle.Both;
@@ -321,7 +320,6 @@
             this.tab.Controls.Add(this.liventv);
             this.tab.Controls.Add(this.livetx);
             this.tab.Controls.Add(this.liveradio);
-            this.tab.Controls.Add(this.web);
             this.tab.Location = new System.Drawing.Point(4, 4);
             this.tab.Name = "tab";
             this.tab.SelectedIndex = 0;
@@ -538,25 +536,6 @@
             this.treeView11.Size = new System.Drawing.Size(584, 707);
             this.treeView11.TabIndex = 8;
             // 
-            // web
-            // 
-            this.web.Controls.Add(this.webBrowser1);
-            this.web.Location = new System.Drawing.Point(4, 21);
-            this.web.Name = "web";
-            this.web.Size = new System.Drawing.Size(584, 707);
-            this.web.TabIndex = 11;
-            this.web.Text = "Web";
-            this.web.UseVisualStyleBackColor = true;
-            // 
-            // webBrowser1
-            // 
-            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(584, 707);
-            this.webBrowser1.TabIndex = 0;
-            // 
             // testCheckBox
             // 
             this.testCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -722,7 +701,6 @@
             this.liventv.ResumeLayout(false);
             this.livetx.ResumeLayout(false);
             this.liveradio.ResumeLayout(false);
-            this.web.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -780,9 +758,7 @@
         private System.Windows.Forms.Button transform;
         private System.Windows.Forms.ContextMenuStrip resListMenu;
         private System.Windows.Forms.ContextMenuStrip threadListMenu;
-        private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.ToolStripMenuItem open;
-        public System.Windows.Forms.TabPage web;
     }
 }
 

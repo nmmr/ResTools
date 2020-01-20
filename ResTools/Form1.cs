@@ -40,7 +40,7 @@ namespace ResTools
 
         public static String endWord = "l50";
         private List<Res> resultRes = new List<Res>();
-        private string tempDir = "G:\\bangumi\\その他\\temp\\";
+        private string tempDir = "E:\\bangumi\\その他\\temp\\";
         private DateTime preStart = DateTime.Now;
         private List<ListViewItem> cacheThread = new List<ListViewItem>();
         private int preStartIndex = 0;
@@ -191,6 +191,12 @@ namespace ResTools
             view.AfterExpand += TreeView1_AfterExpand;
             view.AfterCheck += TreeView1_AfterCheck;
             view.KeyDown += TreeView1_KeyDown;
+
+            ContextMenuStrip cms = new ContextMenuStrip();
+            view.ContextMenuStrip = cms;
+            ContextMenu menu = new ContextMenu();
+            cms.Items.Add("datで開く");
+            cms.ItemClicked += ItaListMenu_ItemClicked;
         }
         private void TreeView1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -1139,8 +1145,7 @@ namespace ResTools
         }
         private void urlOpen(string url)
         {
-            tab.SelectTab("web");
-            webBrowser1.Url = new Uri(url);
+            System.Diagnostics.Process.Start(url);
         }
 
         private void threadListMenu_Opening(object sender, CancelEventArgs e)
@@ -1205,6 +1210,22 @@ namespace ResTools
                     }
                 }
 
+            }
+        }
+
+        private void ItaListMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            if (e.ClickedItem.Text == "datで開く")
+            {
+                ContextMenuStrip cms = (ContextMenuStrip)sender;
+                TreeView view = (TreeView)cms.SourceControl;
+                if (view.SelectedNode != null)
+                {
+                    AbstractTreeNode node = (AbstractTreeNode) view.SelectedNode;
+                    String[] urls = node.url.Split('/');
+//                    System.Console.WriteLine("http://2chlog.com/2ch/live/" + urls[urls.Length - 3] + "/dat/" + urls[urls.Length - 2] + ".dat");
+                    readThread("http://2chlog.com/2ch/live/" + urls[urls.Length - 3] + "/dat/" + urls[urls.Length - 2] + ".dat");
+                }
             }
         }
     }

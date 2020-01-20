@@ -1150,11 +1150,14 @@ namespace Webdll
                             continue;
                         }
                         DateTime cCreate = Lib.UNIXTIME.AddSeconds(long.Parse(dateStr));
-                        datList.Add(new ThreadTreeNode(datUrl, cCreate, "(0)", "DAT:"+title));
-                        this.Nodes.Add(new ThreadTreeNode(cUrl, cCreate, "(0)", "2CH:"+title));
+                        datList.Add(new ThreadTreeNode(datUrl, cCreate, "(0)", title));
                     }
                 }
                 catch { }
+            }
+            if (datList.Count() == 0)
+            {
+                datList.Add(new ThreadTreeNode("", DateTime.Now, "(0)", "スレッドが見つかりませんでした。"));
             }
             this.Nodes.AddRange(datList.ToArray());
         }
