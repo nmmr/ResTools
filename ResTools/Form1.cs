@@ -25,7 +25,7 @@ namespace ResTools
         public static Regex ccRegex = new Regex(".*log.kuka.org/cha2/.*", RegexOptions.IgnoreCase);
         public static Regex ccRegex2 = new Regex(".*smile.cha2.org/test/read.cgi/bangumi/.*", RegexOptions.IgnoreCase);
         public static Regex ccRegex3 = new Regex(".*sun.cha2.org/test/read.cgi/bangumi/.*", RegexOptions.IgnoreCase);
-        public static Regex monoRegex = new Regex(".*2chlog.com/2ch/.*.dat", RegexOptions.IgnoreCase);
+        public static Regex monoRegex = new Regex(".*.dat", RegexOptions.IgnoreCase);
         public static Regex logsokuRegex = new Regex(".*www.logsoku.com/r/2ch.net/.*", RegexOptions.IgnoreCase);
         public static Regex logsoku2Regex = new Regex(".*www.logsoku.com/r/2ch.sc/.*", RegexOptions.IgnoreCase);
         public static Regex aLinkRegex = new Regex("<a .*?>(?<content>.*?)</a>", RegexOptions.IgnoreCase | RegexOptions.Singleline);
@@ -58,19 +58,18 @@ namespace ResTools
         public Form1()
         {
             InitializeComponent();
-
             // treeの構築
-            initTreeView(treeView1, "http://himawari.5ch.net/", "weekly");
+            initTreeView(treeView1, "http://sora.5ch.net/", "weekly");
             initTreeView(treeView2, "http://tanuki.5ch.net/", "livebs2");
             initTreeView(treeView3, "http://nhk2.5ch.net/", "livebs");
             initTreeView(treeView4, "http://nhk2.5ch.net/", "livenhk");
             initTreeView(treeView5, "http://nhk2.5ch.net/", "liveetv");
-            initTreeView(treeView6, "http://himawari.5ch.net/", "livecx");
-            initTreeView(treeView7, "http://himawari.5ch.net/", "livetbs");
-            initTreeView(treeView8, "http://himawari.5ch.net/", "liveanb");
-            initTreeView(treeView9, "http://himawari.5ch.net/", "liventv");
-            initTreeView(treeView10, "http://himawari.5ch.net/", "livetx");
-            initTreeView(treeView11, "http://himawari.5ch.net/", "liveradio");
+            initTreeView(treeView6, "http://sora.5ch.net/", "livecx");
+            initTreeView(treeView7, "http://sora.5ch.net/", "livetbs");
+            initTreeView(treeView8, "http://sora.5ch.net/", "liveanb");
+            initTreeView(treeView9, "http://sora.5ch.net/", "liventv");
+            initTreeView(treeView10, "http://sora.5ch.net/", "livetx");
+            initTreeView(treeView11, "http://sora.5ch.net/", "liveradio");
 
             version = GetType().Assembly.GetName().Version.ToString();
 
@@ -91,9 +90,16 @@ namespace ResTools
             view.Nodes.Add(new MonoTreeNode(domain + name + "/subback.html", name));
 
             view.Nodes.Add(new BoardTreeNode(domain + name + "/subback.html", name));
+            TreeNode kakoAll6 = new KakoTreeNode2(domain + name + "/kako/kako0000.html");
+            kakoAll6.Text = "過去スレッド:202209～";
+            view.Nodes.Add(kakoAll6);
 
-            TreeNode kakoAll4 = new KakoTreeNode2(domain + name + "/kako/kako0000.html");
-            kakoAll4.Text = "過去スレッド:201706～";
+            TreeNode kakoAll5 = new KakoTreeNode2(domain + name + "/kako/kako0001.html");
+            kakoAll5.Text = "過去スレッド:202112～";
+            view.Nodes.Add(kakoAll5);
+
+            TreeNode kakoAll4 = new KakoTreeNode2("http://himawari.5ch.net/" + name + "/kako/kako0000.html");
+            kakoAll4.Text = "過去スレッド:201706～202112";
             view.Nodes.Add(kakoAll4);
 
             TreeNode kakoAll2 = new KakoTreeNode2("http://hayabusa7.5ch.net/" + name + "/kako/kako0000.html");
@@ -191,12 +197,6 @@ namespace ResTools
             view.AfterExpand += TreeView1_AfterExpand;
             view.AfterCheck += TreeView1_AfterCheck;
             view.KeyDown += TreeView1_KeyDown;
-
-            ContextMenuStrip cms = new ContextMenuStrip();
-            view.ContextMenuStrip = cms;
-            ContextMenu menu = new ContextMenu();
-            cms.Items.Add("datで開く");
-            cms.ItemClicked += ItaListMenu_ItemClicked;
         }
         private void TreeView1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -210,13 +210,37 @@ namespace ResTools
             }
         }
 
-        private void TreeView1_AfterCheck(object sender, TreeViewEventArgs e)
+        private async void TreeView1_AfterCheck(object sender, TreeViewEventArgs e)
         {
             TreeNode node = e.Node;
             if (node.Checked && (node is ThreadTreeNode))
             {
                 ThreadTreeNode tNode = node as ThreadTreeNode;
-                readThread(tNode.url);
+                if (radioDat.Checked)
+                {
+                    String[] urls = tNode.url.Split('/');
+                    //                    System.Console.WriteLine("http://2chlog.com/2ch/live/" + urls[urls.Length - 3] + "/dat/" + urls[urls.Length - 2] + ".dat");
+                    readThread("http://2chlog.com/2ch/live/" + urls[urls.Length - 3] + "/dat/" + urls[urls.Length - 2] + ".dat");
+                }
+                else if (radioJane.Checked)
+                {
+                    System.Diagnostics.Process.Start("E:\\Program Files (x86)\\Jane Style\\Jane2ch.exe", "-h " + tNode.url);
+                    String[] urls = tNode.url.Split('/');
+                    // 潜在バグスレッド番号が被っている場合
+                    for (int i = 0; i < 5; i++)
+                    {
+                        await Task.Delay(1000);
+                        string[] files = Directory.GetFiles(@"E:\Program Files (x86)\Jane Style\Logs\2ch", urls[urls.Length - 2] + ".dat", SearchOption.AllDirectories);
+                        if (files.Length > 0)
+                        {
+                            readThread(files[0]);
+                            break;
+                        }
+                    }
+                } else if (radioHtml.Checked)
+                {
+                    readThread(tNode.url);
+                }
             }
         }
 
@@ -309,6 +333,13 @@ namespace ResTools
             else if (thread.resList.Count < 50)
             {
                 if (MessageBox.Show("レス数が(" + thread.resList.Count + ")ですが、追加しますか？", "", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+                {
+                    return;
+                }
+            }
+            if (!thread.isFull)
+            {
+                if (MessageBox.Show("読み込みが完全に終わっていないスレッドですが、追加しますか？","", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
                 {
                     return;
                 }
@@ -1210,22 +1241,6 @@ namespace ResTools
                     }
                 }
 
-            }
-        }
-
-        private void ItaListMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-            if (e.ClickedItem.Text == "datで開く")
-            {
-                ContextMenuStrip cms = (ContextMenuStrip)sender;
-                TreeView view = (TreeView)cms.SourceControl;
-                if (view.SelectedNode != null)
-                {
-                    AbstractTreeNode node = (AbstractTreeNode) view.SelectedNode;
-                    String[] urls = node.url.Split('/');
-//                    System.Console.WriteLine("http://2chlog.com/2ch/live/" + urls[urls.Length - 3] + "/dat/" + urls[urls.Length - 2] + ".dat");
-                    readThread("http://2chlog.com/2ch/live/" + urls[urls.Length - 3] + "/dat/" + urls[urls.Length - 2] + ".dat");
-                }
             }
         }
     }

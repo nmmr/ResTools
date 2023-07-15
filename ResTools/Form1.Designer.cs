@@ -80,6 +80,10 @@
             this.next = new System.Windows.Forms.Button();
             this.nglist = new System.Windows.Forms.Button();
             this.transform = new System.Windows.Forms.Button();
+            this.radioJane = new System.Windows.Forms.RadioButton();
+            this.radioDat = new System.Windows.Forms.RadioButton();
+            this.radioHtml = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.threadListMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EndBar)).BeginInit();
             this.tab.SuspendLayout();
@@ -94,6 +98,7 @@
             this.liventv.SuspendLayout();
             this.livetx.SuspendLayout();
             this.liveradio.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ThreadList
@@ -654,12 +659,57 @@
             this.transform.UseVisualStyleBackColor = true;
             this.transform.Click += new System.EventHandler(this.transform_Click);
             // 
+            // radioJane
+            // 
+            this.radioJane.AutoSize = true;
+            this.radioJane.Checked = true;
+            this.radioJane.Location = new System.Drawing.Point(6, 43);
+            this.radioJane.Name = "radioJane";
+            this.radioJane.Size = new System.Drawing.Size(42, 15);
+            this.radioJane.TabIndex = 11;
+            this.radioJane.TabStop = true;
+            this.radioJane.Text = "jane";
+            this.radioJane.UseVisualStyleBackColor = true;
+            // 
+            // radioDat
+            // 
+            this.radioDat.AutoSize = true;
+            this.radioDat.Location = new System.Drawing.Point(6, 27);
+            this.radioDat.Name = "radioDat";
+            this.radioDat.Size = new System.Drawing.Size(37, 15);
+            this.radioDat.TabIndex = 12;
+            this.radioDat.Text = "dat";
+            this.radioDat.UseVisualStyleBackColor = true;
+            // 
+            // radioHtml
+            // 
+            this.radioHtml.AutoSize = true;
+            this.radioHtml.Location = new System.Drawing.Point(6, 11);
+            this.radioHtml.Name = "radioHtml";
+            this.radioHtml.Size = new System.Drawing.Size(43, 15);
+            this.radioHtml.TabIndex = 13;
+            this.radioHtml.Text = "html";
+            this.radioHtml.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.radioHtml);
+            this.groupBox1.Controls.Add(this.radioJane);
+            this.groupBox1.Controls.Add(this.radioDat);
+            this.groupBox1.Location = new System.Drawing.Point(757, 661);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(67, 70);
+            this.groupBox1.TabIndex = 14;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "取得方法";
+            // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 11F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1016, 736);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.transform);
             this.Controls.Add(this.nglist);
             this.Controls.Add(this.next);
@@ -701,6 +751,8 @@
             this.liventv.ResumeLayout(false);
             this.livetx.ResumeLayout(false);
             this.liveradio.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -759,6 +811,10 @@
         private System.Windows.Forms.ContextMenuStrip resListMenu;
         private System.Windows.Forms.ContextMenuStrip threadListMenu;
         private System.Windows.Forms.ToolStripMenuItem open;
+        private System.Windows.Forms.RadioButton radioJane;
+        private System.Windows.Forms.RadioButton radioDat;
+        private System.Windows.Forms.RadioButton radioHtml;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 

@@ -14,6 +14,13 @@ namespace Webdll
         public static DateTime UNIXTIME = new DateTime(1970, 1, 1, 9, 0, 0, 0);
         public async static Task<string> read(string uri, string charset="shift_jis")
         {
+            if (!uri.StartsWith("http"))
+            {
+                using (System.IO.StreamReader fs = new System.IO.StreamReader(uri, Encoding.Default))
+                {
+                    return fs.ReadToEnd();
+                }
+            }
             using (HttpClient client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0");
@@ -147,6 +154,7 @@ namespace Webdll
         public List<Res> resList = new List<Res>();
         public string charset = "shift_jis";
         public List<string> preThread = new List<string>();
+        public bool isFull = false;
 
         public Thread(string url)
         {
@@ -169,6 +177,7 @@ namespace Webdll
             if (str != null)
             {
                 parser(str);
+                isFull = str.Contains("Over 1000 Thread");
                 if (resList.Count > 10)
                 {
                     bool notSecond = true;
