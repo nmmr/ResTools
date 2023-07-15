@@ -177,7 +177,7 @@ namespace Webdll
             if (str != null)
             {
                 parser(str);
-                isFull = str.Contains("Over 1000 Thread");
+                isFull = str.Contains("Over 1000");
                 if (resList.Count > 10)
                 {
                     bool notSecond = true;
@@ -364,10 +364,13 @@ namespace Webdll
                 }
                 else
                 {
+                    // HTMLの形式が変わったらここ
                     //Regex resRegex = new Regex("<div class=\"post\" id=\"(?<number>.*?)\".*?<div class=\"name\">(?<name>.*?)</div><div class=\"date\">(?<date>.*?)ID:(?<uid>.*?)</div><div class=\"message\">(?<message>.*?)</div></div>", RegexOptions.IgnoreCase | RegexOptions.Singleline);
-                    Regex resRegex = new Regex("<div class=\"post\" id=\"(?<number>.*?)\"(?<message>.*?)</div></div>", RegexOptions.IgnoreCase | RegexOptions.Singleline);
-                    Regex messageRegex = new Regex("data-userid=\"(?<uid>.*?)\" data-id.*?class=\"date\">(?<date>.*?)</.*?class=\"message\"><span class=\"escaped\">(?<message>.*?)</span>");
-                        for (Match m = resRegex.Match(input); m.Success; m = m.NextMatch())
+//                    Regex resRegex = new Regex("<div class=\"post\" id=\"(?<number>.*?)\"(?<message>.*?)</div></div>", RegexOptions.IgnoreCase | RegexOptions.Singleline);
+                    Regex resRegex = new Regex("<article id=\"(?<number>.*?)\"(?<message>.*?)</article>", RegexOptions.IgnoreCase | RegexOptions.Singleline);
+                    Regex messageRegex = new Regex("data-userid=\"(?<uid>.*?)\" data-id.*?class=\"date\">(?<date>.*?)</.*?<section class=\"post-content\">(?<message>.*?)</section>");
+                    //<article id="3" data-date="NG" data-userid="ID:/3KmsKHI" data-id="3" class="clear post"><details open class="post-header"><summary><span class="postid">0003</span><span class="postusername"><b>名無しさん＠お腹いっぱい。</b></span></summary><span class="date">2023/07/15(土) 11:47:44.58</span><span class="uid">ID:/3KmsKHI</span></details><section class="post-content"> 黄色い佐藤くん </section></article>
+                    for (Match m = resRegex.Match(input); m.Success; m = m.NextMatch())
                     {
                         try
                         {

@@ -133,17 +133,18 @@
             // 
             // threadListMenu
             // 
+            this.threadListMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.threadListMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.open});
             this.threadListMenu.Name = "threadListMenu";
-            this.threadListMenu.Size = new System.Drawing.Size(140, 26);
+            this.threadListMenu.Size = new System.Drawing.Size(181, 34);
             this.threadListMenu.Opening += new System.ComponentModel.CancelEventHandler(this.threadListMenu_Opening);
             this.threadListMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.threadListMenu_ItemClicked);
             // 
             // open
             // 
             this.open.Name = "open";
-            this.open.Size = new System.Drawing.Size(139, 22);
+            this.open.Size = new System.Drawing.Size(180, 30);
             this.open.Text = "ブラウザで開く";
             this.open.Click += new System.EventHandler(this.open_Click);
             // 
@@ -191,6 +192,7 @@
             // 
             // resListMenu
             // 
+            this.resListMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.resListMenu.Name = "contextMenuStrip1";
             this.resListMenu.Size = new System.Drawing.Size(61, 4);
             this.resListMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.resListMenu_ItemClicked);
@@ -200,7 +202,7 @@
             this.EndBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.EndBar.Location = new System.Drawing.Point(600, 620);
             this.EndBar.Name = "EndBar";
-            this.EndBar.Size = new System.Drawing.Size(402, 45);
+            this.EndBar.Size = new System.Drawing.Size(402, 69);
             this.EndBar.TabIndex = 4;
             this.EndBar.TickFrequency = 0;
             this.EndBar.TickStyle = System.Windows.Forms.TickStyle.Both;
@@ -214,7 +216,7 @@
             this.StartLabel.BackColor = System.Drawing.Color.Transparent;
             this.StartLabel.Location = new System.Drawing.Point(600, 606);
             this.StartLabel.Name = "StartLabel";
-            this.StartLabel.Size = new System.Drawing.Size(132, 11);
+            this.StartLabel.Size = new System.Drawing.Size(200, 17);
             this.StartLabel.TabIndex = 5;
             this.StartLabel.Text = "開始:2015/09/01 00:00:00";
             // 
@@ -225,7 +227,7 @@
             this.EndLabel.BackColor = System.Drawing.Color.Transparent;
             this.EndLabel.Location = new System.Drawing.Point(738, 606);
             this.EndLabel.Name = "EndLabel";
-            this.EndLabel.Size = new System.Drawing.Size(132, 11);
+            this.EndLabel.Size = new System.Drawing.Size(200, 17);
             this.EndLabel.TabIndex = 5;
             this.EndLabel.Text = "終了:2015/09/01 00:00:00";
             this.EndLabel.Click += new System.EventHandler(this.EndLabel_Click);
@@ -245,9 +247,9 @@
             // 
             this.openCheckbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.openCheckbox.AutoSize = true;
-            this.openCheckbox.Location = new System.Drawing.Point(600, 684);
+            this.openCheckbox.Location = new System.Drawing.Point(559, 678);
             this.openCheckbox.Name = "openCheckbox";
-            this.openCheckbox.Size = new System.Drawing.Size(83, 15);
+            this.openCheckbox.Size = new System.Drawing.Size(124, 21);
             this.openCheckbox.TabIndex = 6;
             this.openCheckbox.Text = "保存後に開く";
             this.openCheckbox.UseVisualStyleBackColor = true;
@@ -256,9 +258,9 @@
             // 
             this.tempCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.tempCheckBox.AutoSize = true;
-            this.tempCheckBox.Location = new System.Drawing.Point(600, 704);
+            this.tempCheckBox.Location = new System.Drawing.Point(566, 698);
             this.tempCheckBox.Name = "tempCheckBox";
-            this.tempCheckBox.Size = new System.Drawing.Size(68, 15);
+            this.tempCheckBox.Size = new System.Drawing.Size(102, 21);
             this.tempCheckBox.TabIndex = 6;
             this.tempCheckBox.Text = "一次保存";
             this.tempCheckBox.UseVisualStyleBackColor = true;
@@ -270,9 +272,9 @@
             this.sort.AutoSize = true;
             this.sort.Checked = true;
             this.sort.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.sort.Location = new System.Drawing.Point(600, 663);
+            this.sort.Location = new System.Drawing.Point(566, 657);
             this.sort.Name = "sort";
-            this.sort.Size = new System.Drawing.Size(65, 15);
+            this.sort.Size = new System.Drawing.Size(99, 21);
             this.sort.TabIndex = 6;
             this.sort.Text = "レスソート";
             this.sort.UseVisualStyleBackColor = true;
@@ -284,7 +286,7 @@
             this.treeView1.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(584, 707);
+            this.treeView1.Size = new System.Drawing.Size(584, 701);
             this.treeView1.TabIndex = 7;
             // 
             // ListButton
@@ -302,9 +304,9 @@
             // 
             this.sameTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.sameTime.AutoSize = true;
-            this.sameTime.Location = new System.Drawing.Point(684, 664);
+            this.sameTime.Location = new System.Drawing.Point(652, 658);
             this.sameTime.Name = "sameTime";
-            this.sameTime.Size = new System.Drawing.Size(65, 15);
+            this.sameTime.Size = new System.Drawing.Size(97, 21);
             this.sameTime.TabIndex = 6;
             this.sameTime.Text = "同じ時間";
             this.sameTime.UseVisualStyleBackColor = true;
@@ -334,9 +336,9 @@
             // weekly
             // 
             this.weekly.Controls.Add(this.treeView1);
-            this.weekly.Location = new System.Drawing.Point(4, 21);
+            this.weekly.Location = new System.Drawing.Point(4, 27);
             this.weekly.Name = "weekly";
-            this.weekly.Size = new System.Drawing.Size(584, 707);
+            this.weekly.Size = new System.Drawing.Size(584, 701);
             this.weekly.TabIndex = 0;
             this.weekly.Text = "番組ch";
             this.weekly.UseVisualStyleBackColor = true;
@@ -344,9 +346,9 @@
             // livebs2
             // 
             this.livebs2.Controls.Add(this.treeView2);
-            this.livebs2.Location = new System.Drawing.Point(4, 21);
+            this.livebs2.Location = new System.Drawing.Point(4, 27);
             this.livebs2.Name = "livebs2";
-            this.livebs2.Size = new System.Drawing.Size(584, 707);
+            this.livebs2.Size = new System.Drawing.Size(584, 701);
             this.livebs2.TabIndex = 1;
             this.livebs2.Text = "BS無料";
             this.livebs2.UseVisualStyleBackColor = true;
@@ -358,15 +360,15 @@
             this.treeView2.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.treeView2.Location = new System.Drawing.Point(0, 0);
             this.treeView2.Name = "treeView2";
-            this.treeView2.Size = new System.Drawing.Size(584, 707);
+            this.treeView2.Size = new System.Drawing.Size(584, 701);
             this.treeView2.TabIndex = 8;
             // 
             // livebs
             // 
             this.livebs.Controls.Add(this.treeView3);
-            this.livebs.Location = new System.Drawing.Point(4, 21);
+            this.livebs.Location = new System.Drawing.Point(4, 27);
             this.livebs.Name = "livebs";
-            this.livebs.Size = new System.Drawing.Size(584, 707);
+            this.livebs.Size = new System.Drawing.Size(584, 701);
             this.livebs.TabIndex = 2;
             this.livebs.Text = "BSNHK";
             this.livebs.UseVisualStyleBackColor = true;
@@ -378,15 +380,15 @@
             this.treeView3.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.treeView3.Location = new System.Drawing.Point(0, 0);
             this.treeView3.Name = "treeView3";
-            this.treeView3.Size = new System.Drawing.Size(584, 707);
+            this.treeView3.Size = new System.Drawing.Size(584, 701);
             this.treeView3.TabIndex = 8;
             // 
             // livenhk
             // 
             this.livenhk.Controls.Add(this.treeView4);
-            this.livenhk.Location = new System.Drawing.Point(4, 21);
+            this.livenhk.Location = new System.Drawing.Point(4, 27);
             this.livenhk.Name = "livenhk";
-            this.livenhk.Size = new System.Drawing.Size(584, 707);
+            this.livenhk.Size = new System.Drawing.Size(584, 701);
             this.livenhk.TabIndex = 3;
             this.livenhk.Text = "NHK";
             this.livenhk.UseVisualStyleBackColor = true;
@@ -398,15 +400,15 @@
             this.treeView4.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.treeView4.Location = new System.Drawing.Point(0, 0);
             this.treeView4.Name = "treeView4";
-            this.treeView4.Size = new System.Drawing.Size(584, 707);
+            this.treeView4.Size = new System.Drawing.Size(584, 701);
             this.treeView4.TabIndex = 8;
             // 
             // liveetv
             // 
             this.liveetv.Controls.Add(this.treeView5);
-            this.liveetv.Location = new System.Drawing.Point(4, 21);
+            this.liveetv.Location = new System.Drawing.Point(4, 27);
             this.liveetv.Name = "liveetv";
-            this.liveetv.Size = new System.Drawing.Size(584, 707);
+            this.liveetv.Size = new System.Drawing.Size(584, 701);
             this.liveetv.TabIndex = 4;
             this.liveetv.Text = "教育";
             this.liveetv.UseVisualStyleBackColor = true;
@@ -418,15 +420,15 @@
             this.treeView5.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.treeView5.Location = new System.Drawing.Point(0, 0);
             this.treeView5.Name = "treeView5";
-            this.treeView5.Size = new System.Drawing.Size(584, 707);
+            this.treeView5.Size = new System.Drawing.Size(584, 701);
             this.treeView5.TabIndex = 8;
             // 
             // livecx
             // 
             this.livecx.Controls.Add(this.treeView6);
-            this.livecx.Location = new System.Drawing.Point(4, 21);
+            this.livecx.Location = new System.Drawing.Point(4, 27);
             this.livecx.Name = "livecx";
-            this.livecx.Size = new System.Drawing.Size(584, 707);
+            this.livecx.Size = new System.Drawing.Size(584, 701);
             this.livecx.TabIndex = 5;
             this.livecx.Text = "フジ";
             this.livecx.UseVisualStyleBackColor = true;
@@ -438,15 +440,15 @@
             this.treeView6.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.treeView6.Location = new System.Drawing.Point(0, 0);
             this.treeView6.Name = "treeView6";
-            this.treeView6.Size = new System.Drawing.Size(584, 707);
+            this.treeView6.Size = new System.Drawing.Size(584, 701);
             this.treeView6.TabIndex = 8;
             // 
             // livetbs
             // 
             this.livetbs.Controls.Add(this.treeView7);
-            this.livetbs.Location = new System.Drawing.Point(4, 21);
+            this.livetbs.Location = new System.Drawing.Point(4, 27);
             this.livetbs.Name = "livetbs";
-            this.livetbs.Size = new System.Drawing.Size(584, 707);
+            this.livetbs.Size = new System.Drawing.Size(584, 701);
             this.livetbs.TabIndex = 6;
             this.livetbs.Text = "TBS";
             this.livetbs.UseVisualStyleBackColor = true;
@@ -458,15 +460,15 @@
             this.treeView7.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.treeView7.Location = new System.Drawing.Point(0, 0);
             this.treeView7.Name = "treeView7";
-            this.treeView7.Size = new System.Drawing.Size(584, 707);
+            this.treeView7.Size = new System.Drawing.Size(584, 701);
             this.treeView7.TabIndex = 8;
             // 
             // liveabs
             // 
             this.liveabs.Controls.Add(this.treeView8);
-            this.liveabs.Location = new System.Drawing.Point(4, 21);
+            this.liveabs.Location = new System.Drawing.Point(4, 27);
             this.liveabs.Name = "liveabs";
-            this.liveabs.Size = new System.Drawing.Size(584, 707);
+            this.liveabs.Size = new System.Drawing.Size(584, 701);
             this.liveabs.TabIndex = 7;
             this.liveabs.Text = "朝日";
             this.liveabs.UseVisualStyleBackColor = true;
@@ -478,15 +480,15 @@
             this.treeView8.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.treeView8.Location = new System.Drawing.Point(0, 0);
             this.treeView8.Name = "treeView8";
-            this.treeView8.Size = new System.Drawing.Size(584, 707);
+            this.treeView8.Size = new System.Drawing.Size(584, 701);
             this.treeView8.TabIndex = 8;
             // 
             // liventv
             // 
             this.liventv.Controls.Add(this.treeView9);
-            this.liventv.Location = new System.Drawing.Point(4, 21);
+            this.liventv.Location = new System.Drawing.Point(4, 27);
             this.liventv.Name = "liventv";
-            this.liventv.Size = new System.Drawing.Size(584, 707);
+            this.liventv.Size = new System.Drawing.Size(584, 701);
             this.liventv.TabIndex = 8;
             this.liventv.Text = "NTV";
             this.liventv.UseVisualStyleBackColor = true;
@@ -498,15 +500,15 @@
             this.treeView9.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.treeView9.Location = new System.Drawing.Point(0, 0);
             this.treeView9.Name = "treeView9";
-            this.treeView9.Size = new System.Drawing.Size(584, 707);
+            this.treeView9.Size = new System.Drawing.Size(584, 701);
             this.treeView9.TabIndex = 8;
             // 
             // livetx
             // 
             this.livetx.Controls.Add(this.treeView10);
-            this.livetx.Location = new System.Drawing.Point(4, 21);
+            this.livetx.Location = new System.Drawing.Point(4, 27);
             this.livetx.Name = "livetx";
-            this.livetx.Size = new System.Drawing.Size(584, 707);
+            this.livetx.Size = new System.Drawing.Size(584, 701);
             this.livetx.TabIndex = 9;
             this.livetx.Text = "テレビ東京";
             this.livetx.UseVisualStyleBackColor = true;
@@ -518,15 +520,15 @@
             this.treeView10.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.treeView10.Location = new System.Drawing.Point(0, 0);
             this.treeView10.Name = "treeView10";
-            this.treeView10.Size = new System.Drawing.Size(584, 707);
+            this.treeView10.Size = new System.Drawing.Size(584, 701);
             this.treeView10.TabIndex = 8;
             // 
             // liveradio
             // 
             this.liveradio.Controls.Add(this.treeView11);
-            this.liveradio.Location = new System.Drawing.Point(4, 21);
+            this.liveradio.Location = new System.Drawing.Point(4, 27);
             this.liveradio.Name = "liveradio";
-            this.liveradio.Size = new System.Drawing.Size(584, 707);
+            this.liveradio.Size = new System.Drawing.Size(584, 701);
             this.liveradio.TabIndex = 10;
             this.liveradio.Text = "ラジオ実況";
             this.liveradio.UseVisualStyleBackColor = true;
@@ -538,16 +540,16 @@
             this.treeView11.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.treeView11.Location = new System.Drawing.Point(0, 0);
             this.treeView11.Name = "treeView11";
-            this.treeView11.Size = new System.Drawing.Size(584, 707);
+            this.treeView11.Size = new System.Drawing.Size(584, 701);
             this.treeView11.TabIndex = 8;
             // 
             // testCheckBox
             // 
             this.testCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.testCheckBox.AutoSize = true;
-            this.testCheckBox.Location = new System.Drawing.Point(684, 684);
+            this.testCheckBox.Location = new System.Drawing.Point(660, 678);
             this.testCheckBox.Name = "testCheckBox";
-            this.testCheckBox.Size = new System.Drawing.Size(48, 15);
+            this.testCheckBox.Size = new System.Drawing.Size(72, 21);
             this.testCheckBox.TabIndex = 6;
             this.testCheckBox.Text = "テスト";
             this.testCheckBox.UseVisualStyleBackColor = true;
@@ -556,9 +558,9 @@
             // 
             this.minutes5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.minutes5.AutoSize = true;
-            this.minutes5.Location = new System.Drawing.Point(600, 588);
+            this.minutes5.Location = new System.Drawing.Point(587, 582);
             this.minutes5.Name = "minutes5";
-            this.minutes5.Size = new System.Drawing.Size(29, 15);
+            this.minutes5.Size = new System.Drawing.Size(42, 21);
             this.minutes5.TabIndex = 9;
             this.minutes5.Text = "5";
             this.minutes5.UseVisualStyleBackColor = true;
@@ -568,9 +570,9 @@
             // 
             this.minutes10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.minutes10.AutoSize = true;
-            this.minutes10.Location = new System.Drawing.Point(632, 588);
+            this.minutes10.Location = new System.Drawing.Point(616, 582);
             this.minutes10.Name = "minutes10";
-            this.minutes10.Size = new System.Drawing.Size(35, 15);
+            this.minutes10.Size = new System.Drawing.Size(51, 21);
             this.minutes10.TabIndex = 9;
             this.minutes10.Text = "10";
             this.minutes10.UseVisualStyleBackColor = true;
@@ -580,9 +582,9 @@
             // 
             this.minutes15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.minutes15.AutoSize = true;
-            this.minutes15.Location = new System.Drawing.Point(664, 588);
+            this.minutes15.Location = new System.Drawing.Point(648, 582);
             this.minutes15.Name = "minutes15";
-            this.minutes15.Size = new System.Drawing.Size(35, 15);
+            this.minutes15.Size = new System.Drawing.Size(51, 21);
             this.minutes15.TabIndex = 9;
             this.minutes15.Text = "15";
             this.minutes15.UseVisualStyleBackColor = true;
@@ -593,9 +595,9 @@
             this.minutes30.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.minutes30.AutoSize = true;
             this.minutes30.Checked = true;
-            this.minutes30.Location = new System.Drawing.Point(696, 588);
+            this.minutes30.Location = new System.Drawing.Point(680, 582);
             this.minutes30.Name = "minutes30";
-            this.minutes30.Size = new System.Drawing.Size(35, 15);
+            this.minutes30.Size = new System.Drawing.Size(51, 21);
             this.minutes30.TabIndex = 9;
             this.minutes30.TabStop = true;
             this.minutes30.Text = "30";
@@ -606,9 +608,9 @@
             // 
             this.minutes60.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.minutes60.AutoSize = true;
-            this.minutes60.Location = new System.Drawing.Point(728, 588);
+            this.minutes60.Location = new System.Drawing.Point(712, 582);
             this.minutes60.Name = "minutes60";
-            this.minutes60.Size = new System.Drawing.Size(35, 15);
+            this.minutes60.Size = new System.Drawing.Size(51, 21);
             this.minutes60.TabIndex = 9;
             this.minutes60.Text = "60";
             this.minutes60.UseVisualStyleBackColor = true;
@@ -618,9 +620,9 @@
             // 
             this.minutes120.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.minutes120.AutoSize = true;
-            this.minutes120.Location = new System.Drawing.Point(760, 588);
+            this.minutes120.Location = new System.Drawing.Point(741, 582);
             this.minutes120.Name = "minutes120";
-            this.minutes120.Size = new System.Drawing.Size(41, 15);
+            this.minutes120.Size = new System.Drawing.Size(60, 21);
             this.minutes120.TabIndex = 9;
             this.minutes120.Text = "120";
             this.minutes120.UseVisualStyleBackColor = true;
@@ -662,12 +664,11 @@
             // radioJane
             // 
             this.radioJane.AutoSize = true;
-            this.radioJane.Checked = true;
+            this.radioJane.Enabled = false;
             this.radioJane.Location = new System.Drawing.Point(6, 43);
             this.radioJane.Name = "radioJane";
-            this.radioJane.Size = new System.Drawing.Size(42, 15);
+            this.radioJane.Size = new System.Drawing.Size(63, 21);
             this.radioJane.TabIndex = 11;
-            this.radioJane.TabStop = true;
             this.radioJane.Text = "jane";
             this.radioJane.UseVisualStyleBackColor = true;
             // 
@@ -676,7 +677,7 @@
             this.radioDat.AutoSize = true;
             this.radioDat.Location = new System.Drawing.Point(6, 27);
             this.radioDat.Name = "radioDat";
-            this.radioDat.Size = new System.Drawing.Size(37, 15);
+            this.radioDat.Size = new System.Drawing.Size(55, 21);
             this.radioDat.TabIndex = 12;
             this.radioDat.Text = "dat";
             this.radioDat.UseVisualStyleBackColor = true;
@@ -684,10 +685,12 @@
             // radioHtml
             // 
             this.radioHtml.AutoSize = true;
+            this.radioHtml.Checked = true;
             this.radioHtml.Location = new System.Drawing.Point(6, 11);
             this.radioHtml.Name = "radioHtml";
-            this.radioHtml.Size = new System.Drawing.Size(43, 15);
+            this.radioHtml.Size = new System.Drawing.Size(64, 21);
             this.radioHtml.TabIndex = 13;
+            this.radioHtml.TabStop = true;
             this.radioHtml.Text = "html";
             this.radioHtml.UseVisualStyleBackColor = true;
             // 
@@ -706,7 +709,7 @@
             // Form1
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 11F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1016, 736);
             this.Controls.Add(this.groupBox1);
