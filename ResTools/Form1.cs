@@ -16,6 +16,8 @@ using System.Xml.Serialization;
 
 namespace ResTools
 {
+    // TODO スレッドのキャッシュ化読み込んだスレッドURLを保存して一覧にするツリーの実装
+    // キャッシュタブ追加、URL日時タイトルなどで絞込する
     public partial class Form1 : Form
     {
         public static string START_FORMAT = "MM/dd HH:mm=";
@@ -71,6 +73,11 @@ namespace ResTools
             initTreeView(treeView10, "http://sora.5ch.net/", "livetx");
             initTreeView(treeView11, "http://sora.5ch.net/", "liveradio");
 
+            treeView12.Nodes.Add(new ServersHTMLTreeNode());
+            treeView12.AfterExpand += TreeView1_AfterExpand;
+            treeView12.AfterCheck += TreeView1_AfterCheck;
+            treeView12.KeyDown += TreeView1_KeyDown;
+
             version = GetType().Assembly.GetName().Version.ToString();
 
             resListMenu.Items.Add("同じ");
@@ -87,9 +94,9 @@ namespace ResTools
         }
         private void initTreeView(TreeView view, string domain, string name)
         {
-            view.Nodes.Add(new MonoTreeNode(domain + name + "/subback.html", name));
-
             view.Nodes.Add(new BoardTreeNode(domain + name + "/subback.html", name));
+            view.Nodes.Add(new DirectoryHTMLTreeNode(domain + name + "/kako/", "過去スレッド"));
+            /*
             TreeNode kakoAll6 = new KakoTreeNode2(domain + name + "/kako/kako0000.html");
             kakoAll6.Text = "過去スレッド:202209～";
             view.Nodes.Add(kakoAll6);
@@ -191,7 +198,8 @@ namespace ResTools
             TreeNode live05 = new KakoTreeNode2("http://live5.5ch.net/" + name + "/kako/kako0000.html");
             live05.Text = "過去スレッド：live5";
             view.Nodes.Add(live05);
-
+            */
+            view.Nodes.Add(new MonoTreeNode(domain + name + "/subback.html", name));
             view.Nodes.Add(new LogsokuTreeNode(name));
 
             view.AfterExpand += TreeView1_AfterExpand;

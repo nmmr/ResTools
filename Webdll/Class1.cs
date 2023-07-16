@@ -818,6 +818,10 @@ namespace Webdll
     }
     public class BoardTreeNode : AbstractTreeNode
     {
+        public BoardTreeNode(string url) : base(url)
+        {
+        }
+
         public BoardTreeNode(string url, string id) : base (url)
         {
             this.id = id;
@@ -1172,6 +1176,125 @@ namespace Webdll
                 datList.Add(new ThreadTreeNode("", DateTime.Now, "(0)", "スレッドが見つかりませんでした。"));
             }
             this.Nodes.AddRange(datList.ToArray());
+        }
+    }
+    // 過去ログ全部参照用
+    public class ServersHTMLTreeNode : AbstractTreeNode
+    {
+        public ServersHTMLTreeNode() : base("https://tanuki.5ch.net/kakolog_servers.html")
+        {
+            this.charset = "utf-8";
+        }
+        protected override void afterread(string input)
+        {
+            //<td><a href="https://1999.5ch.net/kakolog_board.html">1999</a></td>
+            Regex serverRegex = new Regex("<td><a href=\"(?<url>.*?)\">(?<name>.*?)</a></td>");
+            for (Match m = serverRegex.Match(input); m.Success; m = m.NextMatch())
+            {
+                try
+                {
+                    this.TreeView.Nodes.Add(new BoardHTMLTreeNode(m.Groups["url"].Value, m.Groups["name"].Value));
+                }
+                catch (Exception e)
+                {
+                    //MessageBox.Show(m.Groups["message"].Value.Trim());
+                }
+            }
+        }
+    }
+    public class BoardHTMLTreeNode : AbstractTreeNode
+    {
+        public BoardHTMLTreeNode(string url, string name) : base(url)
+        {
+            this.Text = name;
+            this.charset = "utf-8";
+        }
+        protected override void afterread(string input)
+        {
+            //<span class="board_dir"><a href="/bizplus/kako/">bizplus</a></span> <span class="board_orig">ビジネスnews+</span> <span class="thread_range">1172933132 - 1220798500</span> <span class="thread_total">18851 thread(s)</span></p>
+            Regex serverRegex = new Regex("<span class=\"board_dir\"><a href=\"(?<url>.*?)\">.*board_orig\">(?<name>.*?)</span>.*thread_range\">(?<range>.*?)</span>");
+            for (Match m = serverRegex.Match(input); m.Success; m = m.NextMatch())
+            {
+                try
+                {
+                    string[] range = m.Groups["range"].Value.Split('-');
+                    //相対パスを絶対パスに
+                    string directoryUri = new Uri(new Uri(this.url) , m.Groups["url"].Value).AbsoluteUri;
+                    this.Nodes.Add(new DirectoryHTMLTreeNode(directoryUri, m.Groups["name"].Value + ":" + Lib.UNIXTIME.AddSeconds(long.Parse(range[1])).ToString() + "-" + Lib.UNIXTIME.AddSeconds(long.Parse(range[0])).ToString()));
+                }
+                catch (Exception e)
+                {
+                    //MessageBox.Show(m.Groups["message"].Value.Trim());
+                }
+            }
+        }
+    }
+    public class DirectoryHTMLTreeNode : AbstractTreeNode
+    {
+        public DirectoryHTMLTreeNode(string url, string name) : base(url)
+        {
+            this.Text = name;
+            this.charset = "utf-8";
+        }
+
+        protected override void afterread(string input)
+        {
+            TreeNode server = new TreeNode();
+            server.Text = "Other Server";
+            //<p class="menu_link"><a href="//hayabusa2.5ch.net/livebs/kako/">hayabusa2</a></p>
+            Regex serverRegex = new Regex("<p class=\"menu_link\"><a href=\"//(?<url>.*?)\">(?<name>.*?)</a>");
+            for (Match m = serverRegex.Match(input); m.Success; m = m.NextMatch())
+            {
+                try
+                {
+                    server.Nodes.Add(new DirectoryHTMLTreeNode("https://" + m.Groups["url"].Value,
+                        m.Groups["name"].Value));
+                }
+                catch (Exception e)
+                {
+                    //MessageBox.Show(m.Groups["message"].Value.Trim());
+                }
+            }
+            this.Nodes.Add(server);
+            TreeNode list = new TreeNode();
+            list.Text = "Other List";
+            //<p class="menu_link"><a href="./kako0001.html">1463956463-1458960224</a></p>
+            Regex listRegex = new Regex("kako(?<url>.*?)\">(?<range>.*?)</a></p>");
+            for (Match m = listRegex.Match(input); m.Success; m = m.NextMatch())
+            {
+                try
+                {
+                    string[] range = m.Groups["range"].Value.Split('-');
+                    string directoryUri = new Uri(new Uri(this.url), "./kako" + m.Groups["url"].Value).AbsoluteUri;
+                    list.Nodes.Add(new DirectoryHTMLTreeNode(directoryUri,
+                        Lib.UNIXTIME.AddSeconds(long.Parse(range[1])).ToString() + "-" + Lib.UNIXTIME.AddSeconds(long.Parse(range[0])).ToString()));
+                }
+                catch (Exception e)
+                {
+                    //MessageBox.Show(m.Groups["message"].Value.Trim());
+                }
+            }
+            if (list.Nodes.Count == 0)
+            {
+                list.Nodes.Add(new DirectoryHTMLTreeNode(new Uri(new Uri(this.url), "kako0001.html").AbsoluteUri, "リストが表示されないバグ用"));
+            }
+            this.Nodes.Add(list);
+            //<span class="filename">1469020909.dat</span><span class="title"><a href="/test/read.cgi/livebs/1469020909/">岩合光昭の世界ネコ歩き「リオデジャネイロ」★3 [無断転載禁止]&#169;2ch.net </a></span><span class="lines">1002</span></p>
+            Regex threadRegex = new Regex("<span class=\"filename\">(?<date>.*?)</span><span class=\"title\"><a href=\"(?<url>.*?)\">(?<name>.*?)</a></span><span class=\"lines\">(?<num>.*?)</span>");
+            for (Match m = threadRegex.Match(input); m.Success; m = m.NextMatch())
+            {
+                try
+                {
+                    DateTime cCreate = Lib.UNIXTIME.AddSeconds(long.Parse(m.Groups["date"].Value.Replace(".dat", "")));
+                    this.Nodes.Add(new ThreadTreeNode(new Uri(new Uri(this.url), m.Groups["url"].Value).AbsoluteUri,
+                        cCreate, "(" + m.Groups["num"].Value + ")", m.Groups["name"].Value));
+                }
+                catch (Exception e)
+                {
+                    //MessageBox.Show(m.Groups["message"].Value.Trim());
+                }
+            }
+
         }
     }
     public class TreeNodeSoreter : IComparer<TreeNode>
